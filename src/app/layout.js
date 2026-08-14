@@ -23,9 +23,9 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header className="bg-green-900 text-white p-6 shadow-md">
+        <header className="sticky top-0 z-50 bg-green-900 text-white p-6 shadow-md">
           <nav className="flex justify-between items-center max-w-4xl mx-auto">
-            <div className="text-2xl font-bold">JPAlibo.Dev</div>
+            <div className="text-2xl font-bold">JP.Dev</div>
             <ul className="flex space-x-6">
               <li>About Me</li>
               <li>Project</li>
@@ -36,8 +36,8 @@ export default function RootLayout({ children }) {
 
         {children}
 
-        <footer className="bg-green-900 text-white p-1 shadow-md">
-          <p className="text-sm">© 2026 My Portfolio</p>
+        <footer className="sticky bottom-0 z-50 bg-green-900 text-white p-1 shadow-md">
+          <p className="flex justify-center text-sm">© 2026 My Portfolio</p>
         </footer>
       </body>
     </html>
