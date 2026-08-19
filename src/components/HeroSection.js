@@ -10,7 +10,7 @@ export default function HeroSection() {
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">I enjoy building practical mobile and web experiences, and exploring how machine learning can help solve real-world problems.</p>
                 <div className="mt-9 flex flex-wrap gap-4">
                     <a href="#projects" className="rounded-lg bg-emerald-700 px-5 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">See my projects <span aria-hidden="true">↓</span></a>
-                    <a href="mailto:your-johnphilip.alibo22@gmail.com" className="rounded-lg border border-emerald-700 px-5 py-3 font-medium text-emerald-800 transition hover:-translate-y-0.5 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">Get in touch</a>
+                    <a href="mailto:johnphilip.alibo22@gmail.com" className="rounded-lg border border-emerald-700 px-5 py-3 font-medium text-emerald-800 transition hover:-translate-y-0.5 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">Get in touch</a>
                 </div>
             </div>
         </section>
