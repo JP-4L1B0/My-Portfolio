@@ -1,53 +1,47 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
+const navItems = [
+    { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },
+    { id: "certifications", label: "Certifications" },
+];
+
+// The navigation highlights the section currently passing below the sticky header.
 export default function NavBar() {
-    const [activeSection, setActiveSection] = useState("");
+    const [activeSection, setActiveSection] = useState("home");
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ["about", "project", "cert"];
-            let current = "";
+            const sections = ["home", ...navItems.map((item) => item.id)];
+            let current = "home";
 
-            for (const section of sections) {
+            sections.forEach((section) => {
                 const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 150 && rect.bottom >= 150) {
-                        current = section;
-                    }
-                }
-            }
+                if (!element) return;
+                const rect = element.getBoundingClientRect();
+                if (rect.top <= 125 && rect.bottom >= 125) current = section;
+            });
             setActiveSection(current);
-
-            if (window.scrollY < 100) {
-                setActiveSection("");
-            }
         };
 
-        window.addEventListener("scroll", handleScroll);
-
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
-        <header className="sticky top-0 z-50 bg-green-900 text-white p-6 shadow-md">
-            <nav className="flex justify-between items-center max-w-4xl mx-auto">
-                <div className="text-2xl font-bold">
-                    <Link href="/">JP.Dev</Link>
-                </div>
-                <ul className="flex space-x-6">
-                    <li>
-                        <a href="#about" className={`transition ${activeSection === "about" ? "text-green-400 font-bold" : "hover:text-green-400"}`}>About Me</a>
-                    </li>
-                    <li>
-                        <a href="#project" className={`transition ${activeSection === "project" ? "text-green-400 font-bold" : "hover:text-green-400"}`}>Project</a>
-                    </li>
-                    <li>
-                        <a href="#cert" className={`transition ${activeSection === "cert" ? "text-green-400 font-bold" : "hover:text-green-400"}`}>Certification</a>
-                    </li>
+        <header className="sticky top-0 z-50 border-b border-emerald-100 bg-white/90 px-6 py-4 shadow-sm backdrop-blur">
+            <nav className="mx-auto flex max-w-5xl items-center justify-between gap-5">
+                <Link href="#home" className="shrink-0 text-xl font-bold tracking-tight text-emerald-800">JP<span className="text-slate-900">.dev</span></Link>
+                <ul className="flex items-center gap-3 text-sm font-medium sm:gap-6">
+                    {navItems.map((item) => (
+                        <li key={item.id}>
+                            <a href={`#${item.id}`} className={`transition-colors ${activeSection === item.id ? "text-emerald-700" : "text-slate-600 hover:text-emerald-700"}`}>{item.label}</a>
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </header>
