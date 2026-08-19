@@ -7,6 +7,7 @@ const navItems = [
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "learning", label: "Learning" },
+    { id: "contact", label: "Contact" },
 ];
 
 // The navigation highlights the section currently passing below the sticky header.
@@ -22,7 +23,7 @@ export default function NavBar() {
                 const element = document.getElementById(section);
                 if (!element) return;
                 const rect = element.getBoundingClientRect();
-                if (rect.top <= 125 && rect.bottom >= 125) current = section;
+                if (rect.top <= 150 && rect.bottom >= 80) current = section;
             });
             setActiveSection(current);
         };
