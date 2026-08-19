@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navItems = [
     { id: "about", label: "About" },
@@ -13,6 +14,7 @@ const navItems = [
 // The navigation highlights the section currently passing below the sticky header.
 export default function NavBar() {
     const [activeSection, setActiveSection] = useState("home");
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,8 +33,9 @@ export default function NavBar() {
         handleScroll();
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [pathname]);
 
+    if (pathname.startsWith("/projects/")) return null;
     return (
         <header className="sticky top-0 z-50 border-b border-emerald-100 bg-white/90 px-4 py-3 shadow-sm backdrop-blur sm:px-6">
             <nav aria-label="Primary navigation" className="mx-auto flex max-w-5xl items-center justify-between gap-3 sm:gap-5">
